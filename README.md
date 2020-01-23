@@ -6,7 +6,7 @@ JavaScript practice (JQuery) for the Web Applications Development module in Clie
 ### Install
 
 ```html
- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="./path-to-file/jquery.dropdown-menu.js">
 ```
 ### Documentation
