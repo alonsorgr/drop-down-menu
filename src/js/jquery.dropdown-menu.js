@@ -1,7 +1,6 @@
 /**
  * DropDown Menu
- * @since       1.0.0
- * @access      private
+ * 
  * @memberof    jquery.dropdown-menu
  *
  * @link        https://github.com/alonsorgr/drop-down-menu
@@ -11,9 +10,74 @@
  */
 
 
- /**
-  * CSS classes constants
-  */
+(function ($) {
+
+    var itemCounter = 0;
+
+    var methods = {
+        init: function (id) {
+            let nav = new NavBar();
+            $(this).append(nav.get());
+        },
+
+        addSection: function (id, title) {
+            $('.navbar').append(new Section(id, title).get());
+            _displayEvent('#section-'.concat(id), id);
+            $('#section-'.concat(id)).hide();
+        },
+
+        addSubSection: function (id, index, title) {
+            $('#item-'.concat(id)).append(new Section(index, title).get());
+            _displayEvent('#header-'.concat(index), index);
+            $('#section-'.concat(index)).hide();
+        },
+
+        delSection: function (id) {
+            $('#section-'.concat(id)).remove();         
+        },
+
+        addItem: function (id, text, url) {
+            $('#section-'.concat(id)).append(new Item(id, text, url));
+        },
+
+        delItem: function (id) {
+            $('#item-'.concat(id)).remove(); 
+        },
+    }
+
+    function _displayEvent(id, index) {
+        $(id).on({
+            mouseenter: function () {
+                $('#section-'.concat(index)).show();
+            },
+            mouseleave: function () {
+                $('#section-'.concat(index)).hide();
+            }
+        });
+    }
+
+    function _increaseItemIndex() {
+        return itemCounter++;
+    }
+
+    $.fn.dropDownMenu = function (method) {
+
+        if (methods[method]) {
+            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+        }
+        else if (typeof method === 'object' || !method) {
+            return methods.init.apply(this, arguments);
+        } else {
+            console.log('The function  ' + method + ' does not exist in jQuery.dropDownMenu');
+        }
+    };
+
+})(jQuery);
+
+
+/**
+ * CSS classes constants
+ */
 const ITEM_CLASS = 'item';
 const SECTION_CLASS = 'section';
 const NAVBAR_CLASS = 'navbar';
@@ -41,7 +105,6 @@ class Item {
     constructor(id, text, url) {
         this.item = document.createElement('a');
         this.item.setAttribute('class', ITEM_CLASS);
-        this.item.id = 'item-'.concat(id);
         this.item.text = text;
         this.item.href = url;
         return this.item;
@@ -61,11 +124,13 @@ class Section {
      * 
      * @param {Integer} id 
      */
-    constructor(id) {
+    constructor(id, title = '') {
         this.menu = document.createElement('ul');
+        this.menu.id = 'header-'.concat(id);
+        this.menu.appendChild(document.createTextNode(title));
         this.menu.setAttribute('class', SECTION_CLASS);
-        this.menu.id = 'menu-'.concat(id);
-        this.container = document.createElement('div');
+        this.container = document.createElement('li');
+        this.container.id = 'section-'.concat(id);
         this.elements = this.container.childNodes;
         this._setMenu(this.menu, this.container);
     }
@@ -132,7 +197,7 @@ class NavBar {
      * 
      * @param {Integer} id 
      */
-    constructor(id) {
+    constructor(id = 0) {
         this.nav = document.createElement('nav');
         this.nav.setAttribute('class', NAVBAR_CLASS);
         this.nav.id = 'nav-'.concat(id);
@@ -173,7 +238,7 @@ class NavBar {
 }
 
 
-window.onload = function () {
+/* window.onload = function () {
 
     var navbar = new NavBar(0);
     document.getElementById('container').appendChild(navbar.get());
@@ -204,3 +269,18 @@ window.onload = function () {
     section2.addItem(new Item(this.itemCounter++, 'Marca3', 'https://marca.com'));
     section2.addItem(new Item(this.itemCounter++, 'Marca4', 'https://marca.com'));
 };
+ */
+
+(function ($) {
+    $('#container').dropDownMenu('init');
+    $('#container').dropDownMenu('addSection', 0, 'Menu 1');
+    $('#container').dropDownMenu('addSection', 1, 'Menu 1');
+    $('#container').dropDownMenu('addItem', 0, 'Marca1', 'https://marca.com');
+    $('#container').dropDownMenu('addItem', 0, 'Marca2', 'https://marca.com');
+    $('.item').dropDownMenu('addSubSection', 0, 1, 'Menu 1');
+    $('#container').dropDownMenu('addItem', 1, 'Marca Sub', 'https://marca.com');
+
+    
+    //$('#container').dropDownMenu('delItem', 0);
+    //$('#section').dropDownMenu('delSection', 0);
+}(jQuery));
