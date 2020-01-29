@@ -12,40 +12,80 @@
 (function ($) {
 
     var methods = {
-        init: function () {
-            let nav = new NavBar();
+
+        /**
+         * Init
+         * 
+         * @param {Integer} id  navbar id
+         */
+        init: function (id) {
+            let nav = new NavBar(id);
             $(this).append(nav);
         },
 
+        /**
+         * Add section function
+         * 
+         * @param {Integer} id      section id
+         * @param {String}  title   section title
+         */
         addSection: function (id, title) {
             $(this).append(new Section(id, title));
-            menuEvent('#section-'.concat(id), id);
+            _menuEvent('#section-'.concat(id), id);
         },
 
+        /**
+         * Remove section function
+         */
         delSection: function () {
             $(this).remove();
         },
 
+        /**
+         * Add subsection function
+         * 
+         * @param {Integer} id      subsection id
+         * @param {Integer} itemID  event id
+         */
         addSubSection: function (id, itemID) {
             $(this).append(new SubSection(id));
-            menuEvent('#item-'.concat(itemID), id);
+            _menuEvent('#item-'.concat(itemID), id);
         },
 
+        /**
+         * Remove section function
+         */
         delSubSection: function () {
             $(this).remove();
         },
 
-
+        /**
+         * Add item function
+         * 
+         * @param {Integer} id      item id
+         * @param {String}  text    url text
+         * @param {String}  url     url
+         */
         addItem: function (id, text, url) {
             $(this).append(new Item(id, text, url));
         },
 
+        /**
+         * Remove iten function
+         */
         delItem: function () {
             $(this).remove();
         }
+        
     }
 
-    function menuEvent(id, index) {
+    /**
+     * Menu event function
+     * 
+     * @param {Integer} id      element id
+     * @param {Integer} index   element id
+     */
+    function _menuEvent(id, index) {
         $('#container-'.concat(index)).hide();
         $(id).on({
             mouseenter: function () {
@@ -57,6 +97,9 @@
         });
     }
 
+    /**
+     * JQuery plugin DropDownMenu
+     */
     $.fn.dropDownMenu = function (method) {
 
         if (methods[method]) {
