@@ -22,6 +22,11 @@
             menuEvent('#section-'.concat(id), id);
         },
 
+        addSubSection: function (id, itemID) {
+            $(this).append(new SubSection(id));
+            menuEvent('#item-'.concat(itemID), id);
+        },
+
         addItem: function (id, text, url) {
             $(this).append(new Item(id, text, url));
         },
