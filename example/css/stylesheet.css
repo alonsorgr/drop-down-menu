@@ -13,6 +13,25 @@
 body {
     margin: 0px;
     padding: 0px;
+    background-color: #607D8B;
+}
+
+h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #d1e0e0;
+    font-weight: bold;
+    font-size: 4em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #d1e0e0;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 header {
@@ -33,6 +52,7 @@ header {
     display: inline-block;
     color: #d1e0e0;
     padding-top: 10px;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 .title:hover {
@@ -53,6 +73,35 @@ header {
     list-style: none;
     text-decoration: none;
     font-family: 'Roboto Condensed', sans-serif;
+    color:  #0a0f0f;
+}
+.item-container {
+    width: 200px;
+    height: 35px;
+    border: 1px solid #f0f5f5;
+}
+
+.item:link {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 12px;
+    background-color: #f9f9f9;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    color:  #0a0f0f;
+}
+
+.item:visited {
+    color: #0a0f0f;
+}
+
+.item:hover {
+    background-color: #d1e0e0;
+}
+
+.item:active {
+    background-color: #607D8B;
 }
 
 .item:visited {
