@@ -10,7 +10,6 @@
  */
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
-
 body {
     margin: 0px;
     padding: 0px;
@@ -19,7 +18,7 @@ body {
 header {
     background-color: #222D32;
     height: 80px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .header {
@@ -44,7 +43,7 @@ header {
     display: inline-block;
     width: 100%;
     padding: 12px 12px;
-    background-color:#f9f9f9;
+    background-color: #f9f9f9;
     list-style: none;
     text-decoration: none;
     font-family: 'Roboto Condensed', sans-serif;
@@ -55,7 +54,7 @@ header {
 }
 
 .item:hover {
-    background-color:#d1e0e0;
+    background-color: #d1e0e0;
 }
 
 .item:active {
@@ -66,14 +65,14 @@ header {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .sub-section {
     display: none;
     position: relative;
     background-color: #f9f9f9;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     top: -52px;
     left: 184px;
 }

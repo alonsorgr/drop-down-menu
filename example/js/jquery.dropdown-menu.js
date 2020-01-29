@@ -31,7 +31,7 @@
             $(this).append(new Item(id, text, url));
         },
 
-        delItem: function() {
+        delItem: function () {
             $(this).remove();
         }
     }
