@@ -12,8 +12,8 @@
 (function ($) {
 
     var methods = {
-        init: function () {
-            let nav = new NavBar();
+        init: function (id) {
+            let nav = new NavBar(id);
             $(this).append(nav);
         },
 
@@ -34,7 +34,6 @@
         delSubSection: function () {
             $(this).remove();
         },
-
 
         addItem: function (id, text, url) {
             $(this).append(new Item(id, text, url));
