@@ -22,10 +22,19 @@
             menuEvent('#section-'.concat(id), id);
         },
 
+        delSection: function () {
+            $(this).remove();
+        },
+
         addSubSection: function (id, itemID) {
             $(this).append(new SubSection(id));
             menuEvent('#item-'.concat(itemID), id);
         },
+
+        delSubSection: function () {
+            $(this).remove();
+        },
+
 
         addItem: function (id, text, url) {
             $(this).append(new Item(id, text, url));
