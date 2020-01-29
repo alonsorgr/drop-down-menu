@@ -1,3 +1,14 @@
+/**
+ * DropDown Menu
+ * 
+ * @memberof    jquery.dropdown-menu
+ *
+ * @link        https://github.com/alonsorgr/drop-down-menu
+ * @file        This file defines the functionality of the JQuery plugin to create dynamic drop-down menus.
+ * @author      alonsorgr
+ * @since       1.0.0
+ */
+
 (function ($) {
     $('#container').dropDownMenu('init');
     $('.navbar').dropDownMenu('addSection', 0, 'Menu 1');
