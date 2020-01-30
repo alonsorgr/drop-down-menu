@@ -48,10 +48,10 @@
         $('#container-'.concat(index)).hide();
         $(id).on({
             mouseenter: function () {
-                $('#container-'.concat(index)).show();
+                $('#container-'.concat(index)).slideDown(200)
             },
             mouseleave: function () {
-                $('#container-'.concat(index)).hide();
+                $('#container-'.concat(index)).slideUp(200)
             }
         });
     }
